@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Create Task</title>
+</head>
+<body>
+    <h2>Create Task</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Task</button>
+    </form>
+</body>
+</html>
+
+{% endblock %}
