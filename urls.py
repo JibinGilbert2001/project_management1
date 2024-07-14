@@ -1,24 +1,20 @@
-"""
-URL configuration for project_management project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
-from django.urls import include
+from .views import register, user_login, user_logout, home
+from .views import create_project, edit_project, delete_project, project_list
+from .views import task_list, edit_task, create_task, delete_task
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('management.urls'))
+    path('register/', register, name='register'),
+    path('home/', home, name='home'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
+    path('projects/', project_list, name='project_list'),
+    path('projects/create/', create_project, name='create_project'),
+    path('projects/edit/<int:project_id>/', edit_project, name='edit_project'),
+    path('projects/delete/<int:project_id>/', delete_project, name='delete_project'),
+    path('tasks/', task_list, name='task_list'),
+    path('tasks/create/', create_task, name='create_task'),
+    path('tasks/edit/<int:task_id>/', edit_task, name='edit_task'),
+    path('tasks/delete/<int:task_id>/', delete_task, name='delete_task'),
 ]
